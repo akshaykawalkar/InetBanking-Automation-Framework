@@ -5,20 +5,12 @@
     <listener class-name="com.inetBanking.utilities.Reporting"/>
   </listeners>
   <test thread-count="5" name="inetBanking(failed)">
-    <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.inetBanking.testCases.TC_AddCustometTest_003">
-        <methods>
-          <include name="setup"/>
-          <include name="tearDown"/>
-          <include name="addNewCustomer"/>
-        </methods>
-      </class> <!-- com.inetBanking.testCases.TC_AddCustometTest_003 -->
       <class name="com.inetBanking.testCases.TC_Login_DDT_002">
         <methods>
           <include name="setup"/>
           <include name="tearDown"/>
-          <include name="loginDDT" invocation-numbers="4"/>
+          <include name="loginDDT" invocation-numbers="0"/>
         </methods>
       </class> <!-- com.inetBanking.testCases.TC_Login_DDT_002 -->
     </classes>

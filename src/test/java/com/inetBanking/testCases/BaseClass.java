@@ -20,6 +20,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import com.inetBanking.utilities.ReadConfig;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class BaseClass {
 	
 	
@@ -31,31 +33,35 @@ public class BaseClass {
     public static WebDriver driver;
     public static Logger logger;
     
-    @Parameters({"browser"})
     @BeforeClass
-    public void setup(String browser)
+//    @Parameters({"browser"})
+//    public void setup(String browser)
+    public void setup()
+
     {
     	System.out.println("start");
     	 logger=Logger.getLogger("eBanking");
      	PropertyConfigurator.configure("log4j.properties");
-     	
-    	if (browser.equals("chrome"))
-    	{
-    	System.setProperty("webdriver.chrome.driver", config.getChromepath());
-    	driver= new ChromeDriver();   
-    	}
-    	else if (browser.equals("firefox"))
-    			{
-    		System.setProperty("webdriver.gecko.driver", config.getFirefoxpath());
-    		driver=new FirefoxDriver();
-    		
-    			}
-    	else if (browser.equals("edge"))
-    	{
-    		System.setProperty("webdriver.edge.driver", config.getEdgepath());
-    		driver= new EdgeDriver();
-    		
-    	}
+//     	
+//    	if (browser.equals("chrome"))
+//    	{
+//    	System.setProperty("webdriver.chrome.driver", config.getChromepath());
+//    	driver= new ChromeDriver();   
+//    	}
+//    	else if (browser.equals("firefox"))
+//    			{
+//    		System.setProperty("webdriver.gecko.driver", config.getFirefoxpath());
+//    		driver=new FirefoxDriver();
+//    		
+//    			}
+//    	else if (browser.equals("edge"))
+//    	{
+//    		System.setProperty("webdriver.edge.driver", config.getEdgepath());
+//    		driver= new EdgeDriver();
+//    		
+//    	}
+     	WebDriverManager.chromedriver().setup();
+		 driver= new ChromeDriver();
     	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     	driver.get(url);
     	driver.manage().window().maximize();
